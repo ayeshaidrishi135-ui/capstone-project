@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Inner Peace — Template</title>
+
+  <!-- Google font -->
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;600;800;900&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --max-width: 920px;
+      --accent: #4a8ed9;
+      --muted: #6f7b86;
+      --card-bg: #ffffff;
+      --page-bg: #f3f5f6;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%;}
+    body{
+      margin:0;
+      font-family: "Nunito", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: var(--page-bg);
+      color:#222;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+    /* Page container centered like screenshot */
+    .wrap{
+      max-width: var(--max-width);
+      margin: 28px auto;
+      background: white;
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 6px 30px rgba(20,30,40,0.08);
+      border: 1px solid rgba(30,40,50,0.04);
+    }
+
+    /* Header / nav */
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding: 18px 34px;
+      background: transparent;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-weight:800;
+      color:var(--accent);
+      font-size:20px;
+    }
+    .brand .logo{
+      width:34px;
+      height:34px;
+      border-radius:50%;
+      background: radial-gradient(circle at 35% 25%, #f2d9a6 0%, #8ec3e6 40%, #6faee2 100%);
+      box-shadow: 0 2px 8px rgba(74,142,217,0.15) inset;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:900;
+      color:#fff;
+      font-family: "Montserrat", sans-serif;
+      font-size:14px;
+    }
+
+    nav ul{
+      list-style:none;
+      margin:0;
+      padding:0;
+      display:flex;
+      gap:20px;
+      align-items:center;
+      font-weight:600;
+      color:#44515a;
+      font-size:14px;
+    }
+    nav a{
+      text-decoration:none;
+      color:inherit;
+      padding:8px 12px;
+      border-radius:8px;
+    }
+    nav a.active{
+      background: linear-gradient(180deg,#f2f8ff,#e8f2ff);
+      color:var(--accent);
+      box-shadow: 0 2px 0 rgba(74,142,217,0.08);
+    }
+
+    /* HERO */
+    .hero{
+      height:560px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      position:relative;
+      text-align:center;
+      padding: 40px;
+      /* big smooth gradient */
+      background:
+        radial-gradient(circle at 15% 20%, rgba(255,243,216,0.35), transparent 8%),
+        radial-gradient(circle at 90% 70%, rgba(255,255,255,0.08), transparent 8%),
+        linear-gradient(120deg, #e7e8c7 0%, #87b8e6 60%, #5aa0d9 100%);
+      color: #fff;
+      overflow:hidden;
+    }
+
+    /* faint circular rings / dots like screenshot */
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background-image:
+        radial-gradient(circle at 70% 40%, rgba(255,255,255,0.06) 0%, transparent 6%),
+        radial-gradient(circle at 40% 70%, rgba(255,255,255,0.04) 0%, transparent 8%);
+      pointer-events:none;
+    }
+
+    .hero .content{
+      position:relative;
+      z-index:2;
+      max-width:720px;
+      margin:0 auto;
+    }
+
+    .hero h1{
+      font-family: "Montserrat", sans-serif;
+      margin:0 0 16px;
+      font-weight:900;
+      font-size:48px;
+      letter-spacing: -0.6px;
+      text-shadow: 0 2px 0 rgba(0,0,0,0.06);
+    }
+    .hero p.lead{
+      margin:0 0 28px;
+      font-size:15px;
+      font-weight:600;
+      opacity:0.95;
+    }
+
+    .cta{
+      display:inline-block;
+      padding:14px 28px;
+      background:white;
+      color:var(--accent);
+      border-radius:28px;
+      font-weight:700;
+      box-shadow: 0 10px 24px rgba(74,142,217,0.14);
+      text-decoration:none;
+      transition: transform .18s, box-shadow .18s;
+    }
+    .cta:hover{ transform: translateY(-3px); box-shadow: 0 16px 40px rgba(74,142,217,0.18); }
+
+    /* Section under hero */
+    .section{
+      padding:46px 48px;
+      background: #fafafa;
+      text-align:center;
+    }
+    .section h2{
+      margin: 0 0 8px;
+      font-size:28px;
+      font-family: "Montserrat", sans-serif;
+      font-weight:800;
+      color:#222;
+    }
+    .section p.sub{
+      margin:0 0 28px;
+      color:var(--muted);
+      font-weight:600;
+    }
+
+    /* Cards row */
+    .cards{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:22px;
+      padding: 24px 0 12px;
+      justify-items:stretch;
+    }
+
+    .card{
+      background: var(--card-bg);
+      padding:22px;
+      border-radius:16px;
+      box-shadow: 0 12px 30px rgba(18,25,35,0.06);
+      border:1px solid rgba(12,18,24,0.03);
+      text-align:left;
+      min-height:220px;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+    .card .icon{
+      width:56px;
+      height:56px;
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:800;
+      font-family: "Montserrat", sans-serif;
+      color:white;
+      box-shadow: 0 6px 18px rgba(50,70,90,0.06) inset;
+    }
+    .card h3{
+      margin:0;
+      font-size:18px;
+      font-weight:800;
+      color:#1f2a33;
+    }
+    .card p{
+      margin:0;
+      color:#6b7580;
+      font-size:13px;
+      line-height:1.45;
+      flex:1;
+    }
+
+    /* different icon backgrounds (simple) */
+    .ic-1{ background: linear-gradient(135deg,#ffb3d6,#9cc3ff); }
+    .ic-2{ background: linear-gradient(135deg,#fbd77a,#9fe3ff); }
+    .ic-3{ background: linear-gradient(135deg,#c4f0d6,#f0c8ff); }
+
+    /* responsive */
+    @media (max-width:980px){
+      :root{ --max-width: 760px; }
+      .hero{height:520px}
+    }
+    @media (max-width:800px){
+      .wrap{ margin:14px; }
+      .cards{ grid-template-columns: 1fr; }
+      .hero h1{ font-size:36px; }
+      .hero{height:460px; padding:28px}
+    }
+  </style>
+</head>
+<body>
+
+  <div class="wrap" role="main">
+    <header>
+      <div class="brand">
+        <div class="logo">IP</div>
+        <div>Inner Peace</div>
+      </div>
+
+      <nav aria-label="Main navigation">
+        <ul>
+          <li><a href="#" class="active">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Practices</a></li>
+          <li><a href="#">Resources</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section class="hero" aria-label="Hero">
+      <div class="content">
+        <h1>Find Your Inner Peace</h1>
+        <p class="lead">Journey towards mental wellness through mindfulness, meditation, and self-discovery.</p>
+        <a class="cta" href="#discover">Begin Your Journey</a>
+      </div>
+    </section>
+
+    <section id="discover" class="section" aria-label="Discover Mindfulness">
+      <h2>Discover Mindfulness</h2>
+      <p class="sub">Transform your mind, transform your life</p>
+
+      <div class="cards" role="list">
+        <article class="card" role="listitem">
+          <div class="icon ic-1">1</div>
+          <h3>Rewire Your Brain</h3>
+          <p>Neuroplasticity in action — just 10 minutes daily physically reshapes your brain for better focus and emotional control.</p>
+        </article>
+
+        <article class="card" role="listitem">
+          <div class="icon ic-2">2</div>
+          <h3>Instant Calm</h3>
+          <p>Access immediate stress relief through proven breathing techniques that activate your parasympathetic nervous system.</p>
+        </article>
+
+        <article class="card" role="listitem">
+          <div class="icon ic-3">3</div>
+          <h3>Peak Performance</h3>
+          <p>Achieve flow states more easily and unlock your full potential in work, creativity, and personal growth.</p>
+        </article>
+      </div>
+    </section>
+  </div>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Inner Peace — Template</title>
+
+  <!-- Google font -->
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;600;800;900&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --max-width: 920px;
+      --accent: #4a8ed9;
+      --muted: #6f7b86;
+      --card-bg: #ffffff;
+      --page-bg: #f3f5f6;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%;}
+    body{
+      margin:0;
+      font-family: "Nunito", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: var(--page-bg);
+      color:#222;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+    /* Page container centered like screenshot */
+    .wrap{
+      max-width: var(--max-width);
+      margin: 28px auto;
+      background: white;
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 6px 30px rgba(20,30,40,0.08);
+      border: 1px solid rgba(30,40,50,0.04);
+    }
+
+    /* Header / nav */
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding: 18px 34px;
+      background: transparent;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-weight:800;
+      color:var(--accent);
+      font-size:20px;
+    }
+    .brand .logo{
+      width:34px;
+      height:34px;
+      border-radius:50%;
+      background: radial-gradient(circle at 35% 25%, #f2d9a6 0%, #8ec3e6 40%, #6faee2 100%);
+      box-shadow: 0 2px 8px rgba(74,142,217,0.15) inset;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:900;
+      color:#fff;
+      font-family: "Montserrat", sans-serif;
+      font-size:14px;
+    }
+
+    nav ul{
+      list-style:none;
+      margin:0;
+      padding:0;
+      display:flex;
+      gap:20px;
+      align-items:center;
+      font-weight:600;
+      color:#44515a;
+      font-size:14px;
+    }
+    nav a{
+      text-decoration:none;
+      color:inherit;
+      padding:8px 12px;
+      border-radius:8px;
+    }
+    nav a.active{
+      background: linear-gradient(180deg,#f2f8ff,#e8f2ff);
+      color:var(--accent);
+      box-shadow: 0 2px 0 rgba(74,142,217,0.08);
+    }
+
+    /* HERO */
+    .hero{
+      height:560px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      position:relative;
+      text-align:center;
+      padding: 40px;
+      /* big smooth gradient */
+      background:
+        radial-gradient(circle at 15% 20%, rgba(255,243,216,0.35), transparent 8%),
+        radial-gradient(circle at 90% 70%, rgba(255,255,255,0.08), transparent 8%),
+        linear-gradient(120deg, #e7e8c7 0%, #87b8e6 60%, #5aa0d9 100%);
+      color: #fff;
+      overflow:hidden;
+    }
+
+    /* faint circular rings / dots like screenshot */
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background-image:
+        radial-gradient(circle at 70% 40%, rgba(255,255,255,0.06) 0%, transparent 6%),
+        radial-gradient(circle at 40% 70%, rgba(255,255,255,0.04) 0%, transparent 8%);
+      pointer-events:none;
+    }
+
+    .hero .content{
+      position:relative;
+      z-index:2;
+      max-width:720px;
+      margin:0 auto;
+    }
+
+    .hero h1{
+      font-family: "Montserrat", sans-serif;
+      margin:0 0 16px;
+      font-weight:900;
+      font-size:48px;
+      letter-spacing: -0.6px;
+      text-shadow: 0 2px 0 rgba(0,0,0,0.06);
+    }
+    .hero p.lead{
+      margin:0 0 28px;
+      font-size:15px;
+      font-weight:600;
+      opacity:0.95;
+    }
+
+    .cta{
+      display:inline-block;
+      padding:14px 28px;
+      background:white;
+      color:var(--accent);
+      border-radius:28px;
+      font-weight:700;
+      box-shadow: 0 10px 24px rgba(74,142,217,0.14);
+      text-decoration:none;
+      transition: transform .18s, box-shadow .18s;
+    }
+    .cta:hover{ transform: translateY(-3px); box-shadow: 0 16px 40px rgba(74,142,217,0.18); }
+
+    /* Section under hero */
+    .section{
+      padding:46px 48px;
+      background: #fafafa;
+      text-align:center;
+    }
+    .section h2{
+      margin: 0 0 8px;
+      font-size:28px;
+      font-family: "Montserrat", sans-serif;
+      font-weight:800;
+      color:#222;
+    }
+    .section p.sub{
+      margin:0 0 28px;
+      color:var(--muted);
+      font-weight:600;
+    }
+
+    /* Cards row */
+    .cards{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:22px;
+      padding: 24px 0 12px;
+      justify-items:stretch;
+    }
+
+    .card{
+      background: var(--card-bg);
+      padding:22px;
+      border-radius:16px;
+      box-shadow: 0 12px 30px rgba(18,25,35,0.06);
+      border:1px solid rgba(12,18,24,0.03);
+      text-align:left;
+      min-height:220px;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+    .card .icon{
+      width:56px;
+      height:56px;
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:800;
+      font-family: "Montserrat", sans-serif;
+      color:white;
+      box-shadow: 0 6px 18px rgba(50,70,90,0.06) inset;
+    }
+    .card h3{
+      margin:0;
+      font-size:18px;
+      font-weight:800;
+      color:#1f2a33;
+    }
+    .card p{
+      margin:0;
+      color:#6b7580;
+      font-size:13px;
+      line-height:1.45;
+      flex:1;
+    }
+
+    /* different icon backgrounds (simple) */
+    .ic-1{ background: linear-gradient(135deg,#ffb3d6,#9cc3ff); }
+    .ic-2{ background: linear-gradient(135deg,#fbd77a,#9fe3ff); }
+    .ic-3{ background: linear-gradient(135deg,#c4f0d6,#f0c8ff); }
+
+    /* responsive */
+    @media (max-width:980px){
+      :root{ --max-width: 760px; }
+      .hero{height:520px}
+    }
+    @media (max-width:800px){
+      .wrap{ margin:14px; }
+      .cards{ grid-template-columns: 1fr; }
+      .hero h1{ font-size:36px; }
+      .hero{height:460px; padding:28px}
+    }
+  </style>
+</head>
+<body>
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Inner Peace Section</title>
+  <style>
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f7fa;
+    }
+
+    /* STATS BAR */
+    .stats-box {
+      width: 80%;
+      margin: 50px auto;
+      padding: 40px 20px;
+      border-radius: 20px;
+      background: linear-gradient(120deg, #dcd6a8, #4184d9);
+      display: flex;
+      justify-content: space-around;
+      color: white;
+      text-align: center;
+    }
+
+    .stat h2 {
+      margin: 0;
+      font-size: 32px;
+      font-weight: bold;
+    }
+
+    .stat p {
+      margin-top: 5px;
+      font-size: 14px;
+    }
+
+    /* WHY CHOOSE SECTION */
+    .why-section {
+      width: 80%;
+      margin: 50px auto;
+      padding: 40px;
+      background: white;
+      border-radius: 20px;
+      text-align: center;
+    }
+
+    .why-section h1 {
+      font-size: 28px;
+      margin-bottom: 40px;
+    }
+
+    .why-cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .card {
+      width: 240px;
+      padding: 20px;
+      border-radius: 15px;
+      background: #f8f9fd;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      display: flex;
+      gap: 10px;
+      text-align: left;
+      align-items: center;
+    }
+
+    .icon {
+      width: 35px;
+      height: 35px;
+      background: #4a90ff;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: bold;
+    }
+
+    .card p {
+      font-size: 14px;
+    }
+
+  </style>
+</head>
+<body>
+
+<!-- STATS SECTION -->
+<div class="stats-box">
+
+  <div class="stat">
+    <h2>85%</h2>
+    <p>Stress Reduction</p>
+  </div>
+
+  <div class="stat">
+    <h2>3X</h2>
+    <p>Better Focus</p>
+  </div>
+
+  <div class="stat">
+    <h2>10K+</h2>
+    <p>Happy Members</p>
+  </div>
+
+  <div class="stat">
+    <h2>4.9⭐</h2>
+    <p>User Rating</p>
+  </div>
+
+</div>
+
+<!-- WHY CHOOSE SECTION -->
+<div class="why-section">
+  <h1>Why Choose <span style="color:#4a90ff;">Inner Peace?</span></h1>
+
+  <div class="why-cards">
+
+    <div class="card">
+      <div class="icon">✓</div>
+      <p>Science-backed techniques proven by neuroscience</p>
+    </div>
+
+    <div class="card">
+      <div class="icon">✓</div>
+      <p>Personalized journey adapted to your needs</p>
+    </div>
+
+    <div class="card">
+      <div class="icon">✓</div>
+      <p>Expert guidance from certified instructors</p>
+    </div>
+
+    <div class="card">
+      <div class="icon">✓</div>
+      <p>Track your progress with real metrics</p>
+    </div>
+
+    <div class="card">
+      <div class="icon">✓</div>
+      <p>Brought to you by Tooplate website</p>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mindfulness Practices</title>
+  <style>
+
+    body{
+      font-family: Arial, sans-serif;
+      background:#f7f9fc;
+    }
+
+    .section{
+      max-width:900px;
+      margin:60px auto;
+      text-align:center;
+    }
+
+    .section h1{
+      font-size:30px;
+      margin-bottom:5px;
+    }
+
+    .section p{
+      color:gray;
+      font-size:14px;
+    }
+
+    /* timeline layout */
+    .timeline{
+      margin-top:50px;
+      position:relative;
+      padding-left:150px;
+    }
+
+    .line{
+      position:absolute;
+      left:60px;
+      top:0;
+      bottom:0;
+      width:2px;
+      background:#3f6fd9;
+    }
+
+    .label{
+      position:absolute;
+      left:10px;
+      background:white;
+      padding:10px 20px;
+      border-radius:30px;
+      font-size:13px;
+      box-shadow:0 3px 8px rgba(0,0,0,0.1);
+    }
+
+    .label.foundation{
+      top:20px;
+    }
+
+    .label.breathing{
+      top:260px;
+    }
+
+    /* Card style */
+    .card{
+      background:white;
+      border-radius:15px;
+      padding:25px;
+      box-shadow:0 5px 15px rgba(0,0,0,0.08);
+      margin-bottom:50px;
+      text-align:left;
+      border-left:5px solid #3f6fd9;
+    }
+
+    .card h2{
+      margin:0;
+      font-size:18px;
+    }
+
+    .time{
+      font-size:12px;
+      color:#3f6fd9;
+      margin-bottom:10px;
+    }
+
+    .card p{
+      font-size:14px;
+      color:#555;
+    }
+
+    /* tags */
+    .tags{
+      margin-top:15px;
+    }
+
+    .tag{
+      display:inline-block;
+      background:#eef3ff;
+      color:#3f6fd9;
+      padding:5px 15px;
+      margin:5px 5px 0 0;
+      border-radius:30px;
+      font-size:12px;
+    }
+
+  </style>
+</head>
+<body>
+
+<div class="section">
+  <h1>Mindfulness Practices</h1>
+  <p>Master these core practices to build your mindfulness toolkit</p>
+
+  <div class="timeline">
+
+    <div class="line"></div>
+
+    <div class="label foundation">Foundation</div>
+    <div class="label breathing">Breathing</div>
+
+    <!-- FIRST CARD -->
+    <div class="card">
+      <h2>🧘 Foundation Meditation</h2>
+      <div class="time">10-20 minutes daily</div>
+
+      <p>
+        Begin your journey with guided meditation sessions designed for beginners.
+        Learn the fundamental techniques of sitting meditation,
+        including proper posture, attention anchoring, and working
+        with wandering thoughts.
+      </p>
+
+      <div class="tags">
+        <span class="tag">Stress Reduction</span>
+        <span class="tag">Mental Clarity</span>
+        <span class="tag">Emotional Balance</span>
+        <span class="tag">Better Sleep</span>
+      </div>
+    </div>
+
+    <!-- SECOND CARD -->
+    <div class="card">
+      <h2>🌬️ Conscious Breathing</h2>
+      <div class="time">5-10 minutes as needed</div>
+
+      <p>
+        Master the art of breath awareness with techniques that instantly
+        calm your nervous system. From box breathing to 4-7-8 patterns,
+        discover how breathing exercises center you in real-time.
+      </p>
+
+      <div class="tags">
+        <span class="tag">Instant Calm</span>
+        <span class="tag">Energy Boost</span>
+        <span class="tag">Anxiety Relief</span>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Resources & Tools</title>
+<style>
+
+body{
+  font-family: Arial, sans-serif;
+  background:#f7f9fc;
+}
+
+/* Section */
+.resources{
+  width:100%;
+  padding:80px 0;
+  background:white;
+  text-align:center;
+}
+
+.resources h1{
+  font-size:28px;
+  margin-bottom:8px;
+}
+
+.resources p{
+  font-size:14px;
+  color:gray;
+}
+
+/* Buttons */
+.buttons{
+  margin:25px 0 40px;
+}
+
+.btn{
+  border:1px solid #3f6fd9;
+  padding:8px 20px;
+  border-radius:30px;
+  margin:0 5px;
+  background:white;
+  cursor:pointer;
+  color:#3f6fd9;
+}
+
+.btn.active{
+  background:#3f6fd9;
+  color:white;
+}
+
+/* Grid layout */
+.resource-grid{
+  width:85%;
+  margin:auto;
+  display:flex;
+  gap:30px;
+  justify-content:center;
+}
+
+/* Card */
+.resource-card{
+  background:white;
+  border-radius:15px;
+  width:280px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.1);
+  overflow:hidden;
+  text-align:left;
+  transition:0.3s;
+}
+
+.resource-card:hover{
+  transform:translateY(-8px);
+}
+
+/* Image */
+.resource-card img{
+  width:100%;
+  height:170px;
+  object-fit:cover;
+}
+
+/* Content */
+.resource-content{
+  padding:20px;
+}
+
+.resource-content h3{
+  margin:0;
+  font-size:16px;
+}
+
+.resource-content p{
+  margin-top:8px;
+  font-size:13px;
+  color:#666;
+}
+
+</style>
+</head>
+<body>
+
+<section class="resources">
+  <h1>Resources & Tools</h1>
+  <p>Everything you need to support your mindfulness practice</p>
+
+  <div class="buttons">
+    <button class="btn active">Meditations</button>
+    <button class="btn">Courses</button>
+    <button class="btn">Tools</button>
+  </div>
+
+  <div class="resource-grid">
+
+    <!-- CARD 1 -->
+    <div class="resource-card">
+      <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470">
+      <div class="resource-content">
+        <h3>Morning Meditation</h3>
+        <p>
+          Start your day with clarity and intention
+          through our 15-minute practice.
+        </p>
+      </div>
+    </div>
+
+    <!-- CARD 2 -->
+    <div class="resource-card">
+      <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e">
+      <div class="resource-content">
+        <h3>Stress Relief Session</h3>
+        <p>
+          Quick 10-minute guided meditation for
+          immediate stress and anxiety relief.
+        </p>
+      </div>
+    </div>
+
+    <!-- CARD 3 -->
+    <div class="resource-card">
+      <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e">
+      <div class="resource-content">
+        <h3>Sleep Meditation</h3>
+        <p>
+          Peaceful bedtime meditation to help
+          you unwind for restful sleep.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Contact - Inner Peace</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<section class="contact-section">
+
+  <h1>Connect With Us</h1>
+
+  <div class="contact-card">
+
+    <!-- LEFT SIDE -->
+    <div class="contact-left">
+      <h2>Get in Touch</h2>
+
+      <div class="info-box">
+        <h3>Visit Us</h3>
+        <p>123 Wellness Street<br>
+        Mindful City, MC 12345</p>
+      </div>
+
+      <div class="info-box">
+        <h3>Email</h3>
+        <p>hello@innerpeace.com<br>
+        support@innerpeace.com</p>
+      </div>
+
+      <div class="info-box">
+        <h3>Live Chat</h3>
+        <p>Available 24/7 for urgent support</p>
+      </div>
+    </div>
+
+
+    <!-- RIGHT SIDE FORM -->
+    <div class="contact-right">
+      <h2>Send a Message</h2>
+
+      <form>
+        <label>Your Name</label>
+        <input type="text" placeholder="Enter your name">
+
+        <label>Email Address</label>
+        <input type="email" placeholder="Enter your email">
+
+        <label>Subject</label>
+        <textarea placeholder="Enter your message"></textarea>
+
+        <button>Send Message</button>
+      </form>
+    </div>
+
+  </div>
+
+</section>
+
+<footer>
+  <p>Privacy Policy | Terms of Service | Support</p>
+  <p>© 2025 Inner Peace. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

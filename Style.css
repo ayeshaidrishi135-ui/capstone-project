@@ -1,0 +1,108 @@
+body{
+  margin:0;
+  font-family: Arial, sans-serif;
+  background:#f5f5f5;
+}
+
+/* SECTION BACKGROUND */
+.contact-section{
+  padding:60px 0;
+  background: linear-gradient(to right,#9cd1f0,#f4afc8);
+  text-align:center;
+}
+
+.contact-section h1{
+  color:white;
+  margin-bottom:30px;
+}
+
+/* WHITE CARD */
+.contact-card{
+  width:80%;
+  margin:auto;
+  background:white;
+  display:flex;
+  padding:40px;
+  border-radius:20px;
+  justify-content:space-between;
+  box-shadow:0 10px 30px rgba(0,0,0,0.2);
+}
+
+/* LEFT */
+.contact-left{
+  width:45%;
+  text-align:left;
+}
+
+.contact-left h2{
+  margin-bottom:20px;
+  color:#2c4a7a;
+}
+
+.info-box{
+  margin-bottom:25px;
+}
+
+.info-box h3{
+  margin:0;
+  color:#2c4a7a;
+}
+
+.info-box p{
+  margin-top:5px;
+  color:#444;
+}
+
+/* RIGHT */
+.contact-right{
+  width:45%;
+  text-align:left;
+}
+
+.contact-right h2{
+  margin-bottom:20px;
+  color:#2c4a7a;
+}
+
+form label{
+  display:block;
+  margin:10px 0 5px;
+  color:#333;
+}
+
+form input,
+form textarea{
+  width:100%;
+  padding:12px;
+  border-radius:8px;
+  border:1px solid #ccc;
+  outline:none;
+}
+
+textarea{
+  height:100px;
+  resize:none;
+}
+
+button{
+  margin-top:15px;
+  width:100%;
+  padding:12px;
+  background:#3c5a85;
+  color:white;
+  border:none;
+  border-radius:30px;
+  cursor:pointer;
+}
+
+button:hover{
+  background:#2c4a7a;
+}
+
+/* FOOTER */
+footer{
+  background:#222;
+  color:white;
+  padding:20px;
+  text-align:center;
+}
